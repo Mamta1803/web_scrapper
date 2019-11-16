@@ -53,21 +53,15 @@ def scrap():
         page_auth = soup(author_html,"html.parser")
 
         containers_ath = page_auth.findAll("td")
-        # print(len(containers_ath))
-        # print(containers_ath)
 
         karma = containers_ath[-9].text.strip()
         karma_list.append(karma)
-
-    # print(comment_list)
-    # print(author_list)
-    # print(karma_list)
 
 
     # ----------creating dataframe-----------#
     dict = {'Title': title_list, 'Comments': comment_list, 'Author': author_list, 'Karma':karma_list}
 
     df = pd.DataFrame(dict)
-    export_excel = df.to_excel('F:\Django-Scraping-master.xlsx')
+    # export_excel = df.to_excel('F:\Django-Scraping-master.xlsx')
     time.sleep(1)
     return df
